@@ -1,1 +1,3 @@
-WORKSPACE_DIR="$HOME/workspace"
+DOCS="$HOME/docs"
+DOWNLOAD="$HOME/download"
+WORKSPACE="$HOME/workspace"
