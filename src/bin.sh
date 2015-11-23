@@ -23,7 +23,8 @@
 
 __find-dir() {
 	# find directories in base_dir matching parameter
-	local DIRS=($(find "$1"/* -maxdepth 0 -type d -iname "*$2*" -printf "%f\n"))
+	local IFS="|"
+	local DIRS=($(find "$1"/* -maxdepth 0 -type d -iname "*$2*" -printf "%f|"))
 
 	# error if no or more than one match is found
 	if [[ -z $DIRS ]]; then
