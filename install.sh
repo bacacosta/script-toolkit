@@ -7,11 +7,11 @@ SCRIPT_TOOLKIT_DIR="$HOME/.script-toolkit"
 __init() {
 	[[ -d $SCRIPT_TOOLKIT_DIR ]] && rm -r "$SCRIPT_TOOLKIT_DIR"
 	mkdir "$SCRIPT_TOOLKIT_DIR"
-	cp "$BASE_DIR/src"/* "$SCRIPT_TOOLKIT_DIR"
+	cp -r "$BASE_DIR/src"/* "$SCRIPT_TOOLKIT_DIR"
 }
 
 __generate-bootstrap() {
-	for SCRIPT in "$BASE_DIR/src"/*; do
+	for SCRIPT in $(find "$BASE_DIR/src" -type f); do
 		echo ". \"$SCRIPT\"" >> "$SCRIPT_TOOLKIT_DIR/bootstrap.sh"
 	done
 }
