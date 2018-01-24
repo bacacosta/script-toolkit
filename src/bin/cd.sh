@@ -9,12 +9,12 @@
 	[[ -z $2 ]] && cd "$1" || cd "$1/$(__find-dir "$@")"
 }
 
-.cdd() {
-	.cd $DOCS $1
-}
-
 .cddl() {
 	.cd $DOWNLOAD $1
+}
+
+.cddr() {
+	.cd $DRIVE $1
 }
 
 .cdw() {
