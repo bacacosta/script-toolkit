@@ -16,9 +16,15 @@
 		$MUSIC
 		$PICS
 	"
+	local LOG_DIR="$SCRIPT_TOOLKIT_DIR/logs"
+	local LOG_FILE="$LOG_DIR/backup.$(date +%Y%m%d%H%M%S).log"
+
+	# create logs directory if it does not exist
+	[[ ! -d $LOG_DIR ]] && mkdir "$LOG_DIR"
 
 	for SOURCE_DIR in $SOURCE_DIR_LIST; do
-		echo "Backing up $SOURCE_DIR to $1..."
-		rsync -azvh --delete --progress $SOURCE_DIR $1
+		echo "Backing up $SOURCE_DIR to $1..." |& tee -a $LOG_FILE
+		rsync -azvh --delete --progress $SOURCE_DIR $1 |& tee -a $LOG_FILE
+		echo "--------------------------------------------------" |& tee -a $LOG_FILE
 	done
 }
